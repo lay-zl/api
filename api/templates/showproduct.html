@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if ob%}
+<table border="1">
+    <thead>
+
+        <th>Id</th>
+        <th> name</th>
+        <th>discriptions</th>
+        <th>categore</th>
+
+    </thead>
+    <tbody>
+{% for p in ob %}
+    <tr>
+        <td>{{p.id}}</td>
+        <td>{{p.name}}</td>
+        <td>{{p.discription}}</td>
+        <td>{% for category in p.categories.all %}
+                        {{ category.new_catagory }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}</td>
+
+    {%endfor%}
+
+    </tbody>
+</table>
+{%else%}
+<h5>No record</h5>
+{%endif%}
+
+
+
+</body>
+</html>

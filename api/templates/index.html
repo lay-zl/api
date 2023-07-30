@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<form method="post" action="">
+ {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit"> <br>
+    <br>
+
+</form>
+<a href="{% url 'addproduct' %}">Add product</a>&nbsp;&nbsp; <a href="{% url 'showproduct' %}">Show All Product</a><br>
+<br>
+{% if c%}
+<table border="1">
+    <thead>
+
+        <th>Id</th>
+        <th> catagory</th>
+        <th>categore</th>
+
+        <th>actions</th>
+    </thead>
+    <tbody>
+{% for p in c %}
+    <tr>
+        <td>{{p.id}}</td>
+        <td>{{p.new_catagory}}</td>
+        <td>{{p.categore}}</td>
+
+        <td>
+        <a href="{% url 'edit' p.id %}">edit</a>
+            <a href="{% url 'delete' p.id %}">delete</a>
+        </td>
+    {%endfor%}
+
+    </tbody>
+</table>
+{%else%}
+<h5>No record</h5>
+{%endif%}
+</body>
+</html>
